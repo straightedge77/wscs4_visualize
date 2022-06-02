@@ -48,14 +48,14 @@ make start-ide BRANE_DRV="<IP>:50053" BRANE_MOUNT_DFS="redis://<IP>"
 Replace <IP> with the remote brane instance address. Finally, don't forget to replace the 127.0.0.1 IP in the resulting URL with the one of your cluster before copying it in the browser.
 
 ## Reference
-https://wiki.enablingpersonalizedinterventions.nl/user-guide/welcome.html
-https://wiki.enablingpersonalizedinterventions.nl/admins/welcome.html
-https://zenodo.org/
-https://github.com/epi-project/brane-ide
-https://github.com/features/actions
-https://www.kaggle.com/c/titanic/overview
-https://guides.lib.berkeley.edu/citeyourcode
-https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/
-https://computingforgeeks.com/restrict-kubernetes-service-account-users-to-a-namespace-with-rbac/
-https://www.base64encode.org/
+https://wiki.enablingpersonalizedinterventions.nl/user-guide/welcome.html  
+https://wiki.enablingpersonalizedinterventions.nl/admins/welcome.html  
+https://zenodo.org/  
+https://github.com/epi-project/brane-ide  
+https://github.com/features/actions  
+https://www.kaggle.com/c/titanic/overview  
+https://guides.lib.berkeley.edu/citeyourcode  
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/  
+https://computingforgeeks.com/restrict-kubernetes-service-account-users-to-a-namespace-with-rbac/  
+https://www.base64encode.org/  
 https://www.kaggle.com/code/zocainviken/titanic-disaster-deeper-into-dataset
