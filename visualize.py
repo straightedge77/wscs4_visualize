@@ -30,6 +30,7 @@ def bar_chart(feature, title):
     plt.xlabel("Survived or Dead", fontsize=14)
     plt.ylabel("Count", fontsize=14)
     plt.savefig(f'/data/{feature}_relation.png')
+    return f"Figure {feature}_relation.png generated"
 
 def pie_chart(feature, title):
     result = pd.read_csv('/data/result.csv')
@@ -50,6 +51,7 @@ def pie_chart(feature, title):
     df.T.plot(kind='pie', subplots=True, figsize=(20,10), \
         autopct=lambda p:f'{p:.2f}%', title=f'{title}')
     plt.savefig(f'/data/{feature}_relation.png')
+    return f"Figure {feature}_relation.png generated"
 
 def plot_corr():
     result = pd.read_csv('/data/result.csv')
@@ -60,6 +62,7 @@ def plot_corr():
     sns.barplot(corr_sort.values, corr_sort.index, orient='h')
     plt.title("Correlation screening based on correlation coefficient")
     plt.savefig('/data/feature_corrlation.png')
+    return "Figure feature_corrlation.png generated"
 
 def plot_mutual_info():
     result = pd.read_csv('/data/result.csv')
@@ -70,6 +73,7 @@ def plot_mutual_info():
     sns.barplot(mutualInfo_select.values, mutualInfo_select.index, orient='h')
     plt.title("Correlation screening based on mutual information")
     plt.savefig('/data/feature_mutual_info.png')
+    return "Figure feature_mutual_info.png generated"
     
 def plot_age():
     result = pd.read_csv('/data/result.csv')
@@ -83,6 +87,7 @@ def plot_age():
     facet.add_legend()
     plt.title('years old')
     plt.savefig('/data/age_relation.png')
+    return "Figure age_relation.png generated"
 
 def plot_fare():
     result = pd.read_csv('/data/result.csv')
@@ -92,35 +97,35 @@ def plot_fare():
     sns.lineplot(x="Bridge", y="Fare", hue="Survived", style='Sex',
                 data=result)
     plt.savefig('/data/bridge_fare.png')
+    return "Figure bridge_fare.png generated"
     
 if __name__ == '__main__':
     if len(sys.argv) != 2 or (sys.argv[1] != "mutual" and sys.argv[1] != "corr" and sys.argv[1] != "Pclass" and sys.argv[1] != "Bridge" and sys.argv[1] != "Title" and sys.argv[1] != "age" and sys.argv[1] != "sex" and sys.argv[1] != "fare" and sys.argv[1] != "Parch"):
         print(f"Usage: {sys.argv[0]} mutual|corr|Pclass|Bridge|Title|age|sex|fare|Parch")
         exit(1)
 
-    if os.path.exists("/data/result.csv"):
-        output = "Figure generated"
+    if not os.path.exists("/data/result.csv"):
+        print(yaml.dump({"output":"Result.csv not found, please generate it first"}))
+        exit(1)
     else:
-        output = "Result.csv not found, please generate it first"
-    command = sys.argv[1]
-    if command == "mutual":
-        plot_mutual_info()
-    elif command == "corr":
-        plot_corr()
-    elif command == "Pclass":
-        bar_chart('Pclass', 'PClass relation with survival')
-    elif command == "Bridge":
-        pie_chart('Bridge', 'Bridge percentage of survival')
-    elif command == "Title":
-        pie_chart('Title', 'Title percentage of survival')
-    elif command == "age":
-        plot_age()
-    elif command == "sex":
-        bar_chart('Sex', 'Sex relation with survival')
-    elif command == "fare":
-        plot_fare()
-    elif command == "Parch":
-        pie_chart('Parch', 'Parch percentage of survival')
-    print(yaml.dump({"output":output}))
+        command = sys.argv[1]
+        if command == "mutual":
+            print(yaml.dump({"output":plot_mutual_info()}))
+        elif command == "corr":
+            print(yaml.dump({"output":plot_corr()}))
+        elif command == "Pclass":
+            print(yaml.dump({"output":bar_chart('Pclass', 'PClass relation with survival')}))
+        elif command == "Bridge":
+            print(yaml.dump({"output":pie_chart('Bridge', 'Bridge percentage of survival')}))
+        elif command == "Title":
+            print(yaml.dump({"output":pie_chart('Title', 'Title percentage of survival')}))
+        elif command == "age":
+            print(yaml.dump({"output":plot_age()}))
+        elif command == "sex":
+            print(yaml.dump({"output":bar_chart('Sex', 'Sex relation with survival')}))
+        elif command == "fare":
+            print(yaml.dump({"output":plot_fare()}))
+        elif command == "Parch":
+            print(yaml.dump({"output":pie_chart('Parch', 'Parch percentage of survival')}))
 
 # Done
