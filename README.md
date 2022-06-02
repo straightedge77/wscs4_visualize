@@ -13,7 +13,7 @@
 - workflow.ipynb contains the branescript pipeline
 
 ## Prerequisites
-The package can run both in local and Kubernetes infrastructures. To run it, brane cli need to be installed. To run the workflow.ipynb the instance must be  deployed and brane-ide must be installed.
+The package can run both in local and Kubernetes infrastructures. To test it, brane cli need to be installed. To run the workflow.ipynb the instance must be  deployed and brane-ide must be installed.
 
 ## Run
 The brane can be built using command(in the root repository)
@@ -58,3 +58,4 @@ https://guides.lib.berkeley.edu/citeyourcode
 https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/
 https://computingforgeeks.com/restrict-kubernetes-service-account-users-to-a-namespace-with-rbac/
 https://www.base64encode.org/
+https://www.kaggle.com/code/zocainviken/titanic-disaster-deeper-into-dataset
